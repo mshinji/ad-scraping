@@ -1,0 +1,9 @@
+ja:
+  scrapings:
+    index:
+      title: スクレイピング履歴
+      no_scraping: スクレイピングの履歴がありません
+    count_index:
+      title: スクレイピング時転売社一覧
+      reseller_name: 転売社名
+      created_at: 作成日：

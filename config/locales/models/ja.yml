@@ -1,0 +1,129 @@
+# モデル名
+ja:
+  activerecord:
+    errors:
+      messages:
+        record_invalid: "バリデーションに失敗しました: %{errors}"
+        restrict_dependent_destroy:
+          has_one: "%{record}が存在しているので削除できません"
+          has_many: "%{record}が存在しているので削除できません"
+
+    models:
+      company: 企業
+      product: 商品
+      mail_template: メールテンプレート
+      reseller: 転売者
+      bought_detail: 購入詳細
+      black_list: ブラックリスト
+      black_list_category: ブラックリストカテゴリー
+      scraping_history: スクレイピング履歴
+      staff: 担当者
+      import_history: インポート履歴
+
+    attributes:
+      common: &common
+        created_at: 作成日時
+        updated_at: 更新日時
+
+      company:
+        id: ID
+        name: 企業名
+        phonetic: ふりがな
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード確認
+        address: 住所
+        unarrived: 未到着
+        unrefunded: 未返金
+        am_id: AmazonID
+        am_pass: Amazonパスワード
+        notification_interval: 更新間隔
+        notification_status: 通知ステータス
+        status: 権限
+        seller_id: セラーID
+        staff_id: 担当者
+        distributor_ids: 代理店ID
+        contract_type: 夜間買取
+
+      product:
+        company_id: 企業
+        asin_code: ASINコード
+        name: 商品名
+        scrape: スクレイピング実行
+        status: ステータス
+        resale_number: 転売数
+        deleted: 論理削除
+        auto_purchase_status: 自動
+        step: ステップ
+
+      mail_template:
+        company_id: 企業
+        title: タイトル
+        body: メール文章
+
+      reseller:
+        name: 転売会社名
+        address: 住所
+        operation_manager: 運営責任者名
+        tel_number: 電話番号
+        marketplace_id: マーケットプレイスID
+        seller_id: セラーID
+        status: ステータス
+
+      product_reseller:
+        <<: *common
+        first_flg: １回目
+
+      bought_detail:
+        <<: *common
+        product_reseller_id: 商品転売会社
+        quantity: 購入数
+        sum: 購入金額
+        description: 詳細
+        arrived: 到着
+        replies: 返信
+        refund: 返金
+        returns: 返品
+        done: 完了
+        shipping_num: 注文番号
+        shipping: 発送
+        description: 備考
+
+      black_list:
+        <<: *common
+        reseller_id: 転売会社
+        company_id: 企業
+        content: 備考
+        black_list_category_id: ブラックリストカテゴリー
+
+      black_list_category:
+        <<: *common
+        name: 名前
+        level: レベル
+        note: 備考
+        bg_color: 背景色
+
+      scraping_history:
+        <<: *common
+        scraping_type: タイプ
+        company_id: 企業
+        product_id: 商品
+        job_id: ジョブID
+        status: ステータス
+        start_at: 開始時間
+        end_at: 終了時間
+        note: 備考
+
+      staff:
+        <<: *common
+        name: 名前
+
+      import_history:
+        <<: *common
+        import_type: タイプ
+        company_id: 企業
+        job_id: ジョブID
+        status: ステータス
+        start_at: 開始時間
+        end_at: 終了時間
+        note: 備考

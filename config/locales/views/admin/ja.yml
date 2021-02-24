@@ -1,0 +1,115 @@
+ja:
+  admin:
+    company:
+      index:
+        title: アカウント一覧
+        name: 企業名
+        email: メールアドレス
+        staff_id: 担当者
+        contract_type: 夜間買取
+        resale_cnt: 転売商品数
+        unarrived: 未到着
+        unrefunded: 未返金
+      new:
+        title: アカウント登録
+        phonetic: ふりがな
+        seller_id: セラーID
+        distributor_ids: 代理店ID
+        company_seller_id: セラーID
+        necessary: 必須
+        staff_id: 担当者
+      show: &show
+        title: アカウント詳細
+        company: 企業名
+        phonetic: ふりがな
+        email: メールアドレス
+        address: 住所
+        seller_id: セラーID
+        distributor_ids: 代理店ID
+        am_id: AmazonID
+        am_pass: AmazonPASS
+        notification_interval: 更新間隔
+        notification_status: 通知ステータス
+        minutes: 分
+        status: 権限
+        contract_type: 夜間買取
+        staff_id: 担当者
+        edit: 編集
+        back: 戻る
+      edit: &edit
+        title: アカウント編集
+        company: 企業名
+        phonetic: ふりがな
+        placeholder_name: 株式会社hogehoge
+        placeholder_phonetic: ほげほげ
+        email: メールアドレス
+        seller_id: セラーID
+        distributor_ids: 代理店ID
+        placeholder_email: hogehoge@example.com
+        address: 住所
+        placeholder_address:
+        am_id: AmazonID
+        placeholder_am_id:
+        am_pass: AmazonPASS
+        placeholder_am_pass:
+        notification_interval: 更新間隔(分)
+        notification_status: 通知ステータス
+        notify_mail: メール通知
+        status: 権限
+        contract_type: 夜間買取
+        staff_id: 担当者
+        back: 戻る
+        update: 更新
+      inactive:
+        title: 契約終了アカウント一覧
+
+    csv:
+      ordered_index:
+        title: 注文情報取り込み
+        no_import: 取り込みの履歴がありません
+      scraping_index:
+        title: スクレイピング取り込み
+        no_import: 取り込みの履歴がありません
+      export_index:
+        title: 買取履歴csv出力
+        export: 出力
+
+    products:
+      index:
+        title: 商品一覧
+        resellers: 転売会社一覧
+        no_products: 登録されている商品がありません。
+        bought_count: 買取済件数：
+        item: 件
+        stopped: ストップ
+        running: 実行
+        one_week: 週一
+        unarrived_cnt: 未到着件数
+        unrefunded_cnt: 未返金件数
+
+      bought_detail_index:
+        title_unarrived: 未到着注文一覧
+        title_unrefunded: 未返金注文一覧
+
+    black_list_categories:
+      index:
+        title: ブラックリストカテゴリー一覧
+      new:
+        title: ブラックリストカテゴリー登録
+      edit:
+        title: ブラックリストカテゴリー編集
+
+    staffs:
+      index:
+        title: 担当者一覧
+        no_staffs: 登録されている担当者がいません。
+      new:
+        title: 担当者登録
+        necessary: 必須
+      edit:
+        title: 担当者編集
+
+    scrapings:
+      csv:
+        title: CSV取り込み
+        no_import: 取り込みの履歴がありません

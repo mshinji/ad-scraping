@@ -1,0 +1,5 @@
+cron: # GAE用のyamlファイル
+- description: amazon_scraping
+  url: /tasks/scraping
+  schedule: every 1 hours
+  timezone: Asia/Tokyo

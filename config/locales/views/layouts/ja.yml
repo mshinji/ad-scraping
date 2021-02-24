@@ -1,0 +1,26 @@
+ja:
+  layouts:
+    navbar:
+      csv: CSV関連
+      title: Amazon Tool
+      products: 商品管理
+      product_index: 商品一覧
+      product_new: 新規登録
+      resellers: 転売会社
+      reseller_index: 転売会社一覧
+      black_lists: ブラックリスト一覧
+      account: アカウント
+      account_index: アカウント一覧
+      account_register: アカウント登録
+      account_info: アカウント情報
+      account_change: アカウント管理
+      account_admin: 管理者アカウント
+      black_list_categories: BLカテゴリー
+      order_info: 注文情報取り込み
+      staff_index: 担当者一覧
+      inactive: 契約終了アカウント
+      scraping: スクレイピング
+      export_csv: 買取履歴出力
+      scraping_history: スクレイピング履歴
+      mail_templates: テンプレート
+      logout: ログアウト

@@ -1,0 +1,40 @@
+ja:
+  company:
+    show: &show
+      title: アカウント詳細
+      company: 企業名
+      phonetic: ふりがな
+      email: メールアドレス
+      address: 住所
+      seller_id: セラーID
+      distributor_ids: 代理店ID
+      am_id: AmazonID
+      am_pass: AmazonPASS
+      notification_interval: 更新間隔
+      notification_status: 通知ステータス
+      minutes: 分
+      status: 権限
+      edit: 編集
+      back: 戻る
+    edit: &edit
+      title: アカウント編集
+      company: 企業名
+      phonetic: ふりがな
+      placeholder_name: 株式会社hogehoge
+      placeholder_phonetic: ほげほげ
+      email: メールアドレス
+      seller_id: セラーID
+      distributor_ids: 代理店ID
+      placeholder_email: hogehoge@example.com
+      address: 住所
+      placeholder_address:
+      am_id: AmazonID
+      placeholder_am_id:
+      am_pass: AmazonPASS
+      placeholder_am_pass:
+      notification_interval: 更新間隔(分)
+      notification_status: 通知ステータス
+      notify_mail: メール通知
+      status: 権限
+      back: 戻る
+      update: 更新

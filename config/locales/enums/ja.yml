@@ -1,0 +1,70 @@
+ja:
+  enums:
+    company:
+      notification_status:
+        notify: 通知する
+        not_notify: 通知しない
+      status:
+        admin: 管理者
+        manager: マネージャー
+        guest: ゲスト
+      contract_type: # TODO: カラム名変えるの大変なので一旦表示名を変える形
+        consultant: 可
+        agent: 不可
+
+    product:
+      status:
+        fine: 転売なし
+        resale: 転売あり
+      auto_purchase_status:
+        enable: 有効
+        disable: 無効
+      scrape:
+        running: 実行
+        stopped: ストップ
+        one_week: 週一
+      step:
+        first_dealing: 初期対応中
+        completed: 対応完了
+
+    reseller:
+      status:
+        fine: 引下
+        resale: 転売あり
+        warning: 1回目
+        bought: 買取済
+
+    product_reseller:
+      status:
+        fine: 引下
+        resale: 転売あり
+        warning: 1回目
+        bought: 買取済
+      first_flg:
+        uncheck: ２回目以降
+        checked: １回目
+
+    bought_detail:
+      shipping:
+        fba: FBA
+        own: 自己発送
+
+    scraping_history:
+      scraping_type:
+        one_product: 個別
+        all_products: 全商品
+      status:
+        exec: 実行中
+        completed: 完了
+        failed: 失敗
+        pending: 保留
+
+    import_history:
+      import_type:
+        ordered: 注文情報
+        scraping: スクレイピング
+      status:
+        exec: 実行中
+        completed: 完了
+        failed: 失敗
+        pending: 保留

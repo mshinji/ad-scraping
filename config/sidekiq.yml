@@ -1,0 +1,12 @@
+:verbose: false
+:max_retries: 1
+:concurrency: 10
+:pidfile: ./tmp/pids/sidekiq.pid
+:logifle: ./log/sidekiq.log
+:queues:
+  - default
+
+:staging:
+  :concurrency: 5
+:production:
+  :concurrency: 10

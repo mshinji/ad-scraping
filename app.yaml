@@ -1,0 +1,16 @@
+runtime: ruby
+env: flex
+entrypoint: bundle exec rackup --port $PORT
+skip_files:
+  - ^vendor
+automatic_scaling:
+  min_num_instances: 1
+  max_num_instances: 5
+  cool_down_period_sec: 120
+  cpu_utilization:
+    target_utilization: 0.6
+beta_settings:
+  cloud_sql_instances: amazon-ban-staging:us-central1:amazon-reseller-ban-staging
+threadsafe: true
+includes:
+  - secret.yaml

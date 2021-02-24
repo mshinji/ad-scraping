@@ -1,0 +1,9 @@
+ja:
+  resale_log:
+    show:
+      title: 転売ログ
+      log: ログ
+      time: ログ時間
+      reseller_name: 転売社名：
+      product_name: 商品名　：
+      back: 戻る

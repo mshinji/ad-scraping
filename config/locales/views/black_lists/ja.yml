@@ -1,0 +1,13 @@
+ja:
+  black_lists:
+    index:
+      title: ブラックリスト一覧
+      seller_id: セラーID
+      name: 転売会社名
+      category: カテゴリー
+      company_id: 登録企業
+      no_black_lists: 登録されているブラックリストがありません
+
+    edit_modal:
+      date: 日付
+      current_company: アカウント名

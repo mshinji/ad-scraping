@@ -1,0 +1,94 @@
+<div class="container">
+  <%= label_tag :title, t('.title'), class: 'title' %>
+  <hr>
+  <%= render 'layouts/flash_messages' %>
+</div>
+
+<div class="container">
+  <div class="mb-3">
+  </div>
+</div>>
+<%
+=begin%>
+<%= search_form_for @q do |f| %>
+<%= f.text_field :asin_code_cont, class: 'form-control form-control-sm w-15 d-inline-block', placeholder: t('activerecord.attributes.product.asin_code') %>
+<%= f.text_field :name_cont, class: 'form-control form-control-sm align-top w-15 d-inline-block', placeholder: t('activerecord.attributes.product.name') %>
+<%= f.select :status_eq,
+      { t('enums.product.status.fine') => 0, t('enums.product.status.resale') => 1 },
+      { prompt: t('activerecord.attributes.product.status') }, { class: 'form-control form-control-sm align-top w-10 d-inline-block' } %>
+<%= f.select :step_eq, product_select_step_options,
+        { prompt: t('activerecord.attributes.product.step') }, { class: 'form-control form-control-sm align-top w-10 d-inline-block' } %>
+<%= f.submit t('label.Search'), class: 'btn btn-sm btn-info align-top' %>
+<a class="btn btn-sm btn-light btn-clear align-top"><%= t('label.Clear') %></a>
+<div id="new-button-marging" class="ml-4 d-inline-block align-top pull-right">
+  <%= link_to t('label.New', target: t('activerecord.models.product')), url_for(action: 'new'), class: 'btn btn-sm btn-info' %>
+</div>
+<% end %>
+</div>
+<table class="table table-hover fs-14p">
+  <thead>
+    <tr>
+      <th class="w-5 text-center"><%= t('activerecord.attributes.product.auto_purchase_status') %></th>
+      <th class="w-12"><%= t('activerecord.attributes.product.asin_code') %></th>
+      <th class="w-30"><%= sort_link(@q, :name, t('activerecord.attributes.product.name')) %></th>
+      <th class="w-10 text-center"><%= sort_link(@q, :status, t('activerecord.attributes.product.status')) %></th>
+      <th class="w-10 text-center"><%= sort_link(@q, :step, t('activerecord.attributes.product.step')) %></th>
+      <th class="w-10 text-center"><%= sort_link(@q, :resale_number, t('activerecord.attributes.product.resale_number')) %></th>
+      <th class="w-10 text-center"><%= sort_link(@q, :scrape, t('activerecord.attributes.product.scrape')) %></th>
+      <th class="w-12"></th>
+    </tr>
+  </thead>
+  <tbody id="sortable-table">
+    <% if @products.present? %>
+    <% @products.each do |product| %>
+    <% product_count = product.product_resellers.where(deleted: false, status: :bought).count %>
+    <% reseller_count = resale_reseller_count(product) %>
+    <tr id="product-<%= product.id %>">
+      <td class="align-middle text-center"><%= product.auto_purchase_status_i18n %></td>
+      <td class="align-middle"><%= product.asin_code %></td>
+      <td class="align-middle">
+        <strong>
+          <%= link_to url_for(action: 'reseller_index', id: product.id) do %>
+          <%= product.name.slice(0..35) %>
+          <% end %><br>
+          <span class="<%= product_count.positive? ? 'text-warning' : 'text-info' %>"><%= t('.bought_count') + product_count.to_s + t('.item') %></span>
+        </strong>
+        <hr class="mt-2 mb-2">
+        <%= unarrived_and_unrefunded_display(product, @bought_details_hash) %>
+      </td>
+      <td class="align-middle text-center rounded-0 <%= product_status_color(product) %>">
+        <%= product.status_i18n %>
+      </td>
+      <td class="align-middle text-center">
+        <%= product.step_i18n %>
+      </td>
+      <td class="align-middle text-center">
+        <%= product.resale_number %>
+      </td>
+      <td class="align-middle text-center"><%= display_scrape(product) %></td>
+      <td class="align-middle text-center">
+        <%= link_to Constants::SCRAPE_BASE_URL + product.asin_code + Constants::SUFFIX, target: '_blank', class: 'btn btn-info btn-sm mb-1', style: 'font-size: 15px; width: 97px;' do %>
+        <span class="align-text-bottom">amazon</span> <i class="fab fa-amazon"></i>
+        <% end %><br />
+        <%= link_to t('label.Edit'), url_for(action: 'edit', id: product.id), class: 'btn btn-info btn-sm mb-1' %>
+        <%= link_to t('label.Destroy'), url_for(action: 'destroy', id: product.id), method: :delete, data: { confirm: t('label.Are_you_sure?') }, class: 'btn btn-danger btn-sm mb-1' %>
+      </td>
+    </tr>
+    <% end %>
+    <% else %>
+    <tr>
+      <td colspan="6"><%= t('products.index.no_products') %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<div>
+  <%= paginate @products %>
+</div>
+<%
+=end%>
+<%
+=begin%>
+</div>
+<%
+=end%>
