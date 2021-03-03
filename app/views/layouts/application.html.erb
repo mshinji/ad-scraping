@@ -5,7 +5,6 @@
   <title>AdScraping</title>
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_pack_tag    'application' %>
   <%= stylesheet_pack_tag    'application' %>
   <%= action_cable_meta_tag if Rails.env.production?%>
@@ -13,6 +12,7 @@
 </head>
 
 <body>
+  <%= render 'layouts/navbar' %>
   <div class="container">
     <%= yield %>
   </div>

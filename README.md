@@ -32,7 +32,7 @@ $ docker-compose up
 # 下記が出来なければ docker-compose run --rm web bundle exec rails db:create
 $ docker-compose exec web bundle exec rails db:create
 
-$ cat <ダンプファイル> | docker exec -i ad-reseller-postgres psql -U amazon_reseller_ban -d ad_scraping_development
+$ cat <ダンプファイル> | docker exec -i ad-scraping-postgres psql -U amazon_scraping_ban -d ad_scraping_development
 ```
 
 ## drop database
@@ -44,5 +44,5 @@ $ docker-compose run --rm web bundle exec rails db:drop
 ## import dump file
 
 ```
-$ cat <ダンプファイル> | docker exec -i ad-reseller-postgres psql -U amazon_reseller_ban -d ad_scraping_development
+$ cat <ダンプファイル> | docker exec -i ad-scraping-postgres psql -U ad_scraping -d ad_scraping_development
 ```

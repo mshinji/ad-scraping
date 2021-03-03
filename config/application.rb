@@ -21,15 +21,30 @@ Bundler.require(*Rails.groups)
 
 module AdScraping
   class Application < Rails::Application
-    # Initialize configuration defaults for originally generated Rails version.
+    # config.load_defaults 5.2
     config.load_defaults 6.1
 
-    # Configuration for the application, engines, and railties goes here.
-    #
-    # These settings can be overridden in specific environments using the files
-    # in config/environments, which are processed later.
-    #
-    # config.time_zone = "Central Time (US & Canada)"
-    # config.eager_load_paths << Rails.root.join("extras")
+    config.i18n.default_locale = :ja
+    config.time_zone = 'Tokyo'
+
+    # 以下は状況に応じて変更する
+    # config.autoload_paths =+ %W(#{config.root}/lib)
+    # config.autoload_paths += %W(#{config.root}/lib/ext)
+    # ファイル読み込み本番用
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
+
+    # Don't generate system test files.
+    config.generators.system_tests = nil
+
+    config.generators do |g|
+      g.assets false
+      g.test_framework false
+    end
+
+    config.action_view.field_error_proc = proc { |html_tag, instance| html_tag }
+
+    config.active_record.cache_versioning = false
+
+    config.active_job.queue_adapter = :sidekiq
   end
 end

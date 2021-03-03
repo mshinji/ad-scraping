@@ -1,0 +1,8 @@
+ja:
+  ad:
+    show:
+      title: "%{name}の広告"
+      status: ステータス
+      engine: エンジン
+      url: URL
+      name: 広告名

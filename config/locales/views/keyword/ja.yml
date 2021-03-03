@@ -1,0 +1,10 @@
+ja:
+  keyword:
+    index:
+      name: キーワード名
+      title: キーワード一覧
+      status: ステータス
+    new:
+      title: キーワード新規作成
+    edit:
+      title: キーワード編集

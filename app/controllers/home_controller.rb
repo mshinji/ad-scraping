@@ -1,9 +1,7 @@
 class HomeController < ApplicationController
   include HomeHelper
 
-  def index
-    @q = []
-  end
+  def index;end
 
   def scraping
 

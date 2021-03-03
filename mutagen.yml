@@ -9,3 +9,4 @@ sync:
         - "/node_modules"
         - "/log"
         - "/tmp"
+        - "/vendor"

@@ -3,25 +3,26 @@ version: "3"
 services:
   postgres:
     image: postgres:10-alpine
-    container_name: ad-reseller-postgres
+    container_name: ad-scraping-postgres
     environment:
-      POSTGRES_HOST_AUTH_METHOD: "trust"
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
     volumes:
       - ad-postgres-data:/var/lib/postgresql/data
     ports:
       - "5555:5432"
   redis:
     image: redis:alpine
-    container_name: ad-reseller-redis
+    container_name: ad-scraping-redis
     ports:
       - "6379:6379"
     volumes:
       - ad-redis-cache:/var/lib/redis/data
   web:
     build: .
-    image: ad-reseller-app
+    image: ad-scraping-app
     command: sh -c 'rm -f tmp/pids/server.pid && bundle exec rails s -b 0.0.0.0 -p 3000'
-    container_name: ad-reseller-app
+    container_name: ad-scraping-app
     ports:
       - "3000:3000"
     volumes:
@@ -36,24 +37,24 @@ services:
     depends_on:
       - postgres
       - redis
-  webpack:
-    build: .
-    image: ad-reseller-webpack
-    command: sh -c './bin/webpack-dev-server'
-    container_name: ad-reseller-webpack
-    ports:
-      - "3035:3035"
-    volumes:
-      - .:/myapp:cached
-    tty: false
-    stdin_open: false
-    depends_on:
-      - web
+  # webpack:
+  #   build: .
+  #   image: ad-scraping-webpack
+  #   command: sh -c './bin/webpack-dev-server'
+  #   container_name: ad-scraping-webpack
+  #   ports:
+  #     - "3035:3035"
+  #   volumes:
+  #     - .:/myapp:cached
+  #   tty: false
+  #   stdin_open: false
+  #   depends_on:
+  #     - web
   worker:
     build: .
-    image: ad-reseller-worker
+    image: ad-scraping-worker
     command: bundle exec sidekiq -C config/sidekiq.yml
-    container_name: ad-reseller-worker
+    container_name: ad-scraping-worker
     volumes:
       - .:/myapp
     depends_on:

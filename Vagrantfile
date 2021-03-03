@@ -10,7 +10,7 @@ Vagrant.configure("2") do |config|
   config.vm.provider :virtualbox do |vb|
     vb.gui = false
     vb.cpus = 4
-    vb.memory = 4096
+    vb.memory = 2048
     vb.customize ['modifyvm', :id, '--natdnsproxy1', 'off']
     vb.customize ['modifyvm', :id, '--natdnshostresolver1', 'off']
   end
@@ -20,7 +20,7 @@ Vagrant.configure("2") do |config|
 
   config.vm.synced_folder './', '/home/vagrant/app', type: "rsync",
     rsync_auto: true,
-    rsync__exclude: ['.git/', 'node_modules/', 'log/', 'tmp/']
+    rsync__exclude: ['.git/', 'node_modules/', 'log/', 'tmp/', 'vendor/']
 
   config.vm.provision 'shell', inline: <<-SHELL
     curl -fsSL https://get.docker.com -o get-docker.sh

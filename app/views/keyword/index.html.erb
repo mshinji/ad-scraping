@@ -1,0 +1,59 @@
+<div class="container">
+  <%= label_tag :title, t('.title'), class: 'title' %>
+  <hr>
+  <%= render 'layouts/flash_messages' %>
+</div>
+<div class="container">
+  <div class="mb-3">
+    <div class="d-block align-top mb-3">
+      <%= link_to t('label.New', target: t('activerecord.models.keyword')), url_for(action: :new), class: 'btn btn-sm btn-info' %>
+      <%= all_scraping_btn %>
+    </div>
+  </div>
+  <div class="mb-3">
+    <%= search_form_for @q, url: url_for(action: :index) do |f| %>
+    <%= f.select :status_eq, Keyword.statuses.map{ |k, v| [Keyword.statuses_i18n[k], v] },
+      { selected: @q.status_eq, prompt: t('activerecord.attributes.keyword.status') },
+      { class: 'form-control form-control-sm align-top w-10 d-inline-block' } %>
+    <%= f.text_field :name_cont, class: 'form-control form-control-sm w-15 d-inline-block', placeholder: t('.name') %>
+    <%= f.submit t('label.Search'), class: 'btn btn-sm btn-info align-top' %>
+    <a class="btn btn-sm btn-light btn-clear align-top" href="#"><%= t('label.Clear') %></a>
+    <% end %>
+  </div>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th class="w-15"><%= sort_link(@q, :name, t('.status')) %></th>
+        <th class="w-45"><%= sort_link(@q, :name, t('.name')) %></th>
+        <th class="w-20"></th>
+        <th class="w-20"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @keywords.each do |keyword| %>
+      <tr>
+        <td class="align-middle text-center <%= keyword_status_color keyword %>">
+          <%= keyword.status_i18n %>
+        </td>
+        <td class="align-middle">
+          <%= link_to url_for(action: :show, id: keyword.id), class: 'keyword-name' do %>
+          <%= keyword.name %>
+          <% end %>
+        </td>
+        <td class="align-middle text-center">
+          <%= one_scraping_btn keyword %>
+          <%= link_to t('label.Result'), url_for(controller: :ad, action: :show, id: keyword.id), class: 'btn btn-sm btn-outline-success' %>
+        </td>
+        <td class="align-middle text-center">
+          <%= link_to t('label.Edit'), url_for(action: :edit, id: keyword.id), class: 'btn btn-info btn-sm mr-2' %>
+          <%= link_to t('label.Destroy'), keyword_path(id: keyword.id),
+            method: :delete, data: { confirm: 'キーワードを削除してもいいですか？' }, class: 'btn btn-danger btn-sm mr-2' %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div>
+    <%= paginate @keywords %>
+  </div>
+</div>

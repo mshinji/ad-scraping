@@ -36,7 +36,7 @@ test:
 #
 staging:
   <<: *default
-  database: amazon_reseller_ban_staging
+  database: ad_scraping_staging
   username: <%= ENV['POSTGRES_USER'] %>
   password: <%= ENV['POSTGRES_PASSWORD'] %>
   host: <%= ENV['POSTGRES_HOST'] %>

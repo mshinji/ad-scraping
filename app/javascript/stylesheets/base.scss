@@ -1,0 +1,412 @@
+.w-2 {
+  width: 2%;
+}
+.w-5 {
+  width: 5%;
+}
+.w-7 {
+  width: 7%;
+}
+.w-8 {
+  width: 8%;
+}
+.w-10 {
+  width: 10%;
+}
+.w-12 {
+  width: 12%;
+}
+.w-13 {
+  width: 13%;
+}
+.w-15 {
+  width: 15%;
+}
+.w-16 {
+  width: 16%;
+}
+.w-18 {
+  width: 18%;
+}
+.w-20 {
+  width: 20%;
+}
+.w-25 {
+  width: 25%;
+}
+.w-30 {
+  width: 30%;
+}
+.w-35 {
+  width: 35%;
+}
+.w-40 {
+  width: 40%;
+}
+.w-45 {
+  width: 45%;
+}
+.w-55 {
+  width: 55%;
+}
+.w-60 {
+  width: 60%;
+}
+.w-70 {
+  width: 70%;
+}
+.w-80 {
+  width: 80%;
+}
+
+.pr-10p {
+  padding-right: 10px;
+}
+
+.fs-14p {
+  font-size: 14px;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.input-datepicker {
+  position: relative;
+}
+
+.must {
+  background: #ff1a00;
+  color: #fff;
+  border-radius: 3px;
+  font-size: 12px;
+  margin-right: 10px;
+  padding: 5px 10px;
+  letter-spacing: 0.2em;
+}
+
+#loginForm {
+  margin: 80px auto 0;
+}
+
+#loginFormFlash {
+  margin: 55px auto 15px;
+}
+
+.alert-prewarning {
+  background-color: #f5d0a9;
+  color: #ff8000;
+}
+
+.pull-right {
+  float: right !important;
+}
+
+.pull-left {
+  float: left !important;
+}
+
+.title {
+  font-size: 20px;
+  margin-top: 35px;
+}
+
+.form-margin {
+  width: 160px;
+}
+
+.name-change-badge {
+  padding: 3px 6px;
+  margin-right: 8px;
+  margin-left: 1px;
+  font-size: 75%;
+  color: white;
+  border-radius: 6px;
+  box-shadow: 0 0 3px #ddd;
+  white-space: nowrap;
+  background-color: #ecd834;
+  color: #333;
+}
+
+.first-flg-badge {
+  padding: 3px 6px;
+  margin-right: 8px;
+  margin-left: 1px;
+  font-size: 75%;
+  color: white;
+  border-radius: 6px;
+  box-shadow: 0 0 3px #ddd;
+  white-space: nowrap;
+  background-color: #fa5882;
+  color: #fff;
+}
+
+.previous-name {
+  display: none;
+  position: absolute;
+  top: -70px;
+  width: 80%;
+  padding: 16px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+  background: #ecd834;
+  color: #333;
+  font-size: 12px;
+  text-align: center;
+}
+
+.previous-name:after {
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  width: 0;
+  height: 0;
+  margin-left: -30px;
+  border-top: 15px solid #ecd834;
+  border-right: 15px solid transparent;
+  border-left: 15px solid transparent;
+  border-width: 15px;
+  pointer-events: none;
+  content: "";
+}
+
+.form-checkbox-status {
+  width: 25%;
+  display: inline-block;
+}
+
+#new-button-margin {
+  margin-bottom: 1rem;
+}
+
+#select-form-width {
+  width: 150px;
+}
+
+.sort_link {
+  color: #212529 !important;
+  transition: opacity 0.2s ease-in-out;
+  &:hover {
+    opacity: 0.7;
+    text-decoration: none;
+  }
+}
+
+.clipboard-btn {
+  cursor: pointer;
+  background-color: #efefef;
+  padding: 3px 8px;
+  border-radius: 5px;
+  vertical-align: text-bottom;
+}
+
+.copy-link {
+  font-size: 10px;
+  margin-left: 2px;
+  color: #555;
+}
+
+#mail-template {
+  height: 300px;
+  font-size: 14px;
+}
+
+.black-list-icon {
+  position: absolute;
+  top: 1px;
+  left: -12px;
+  font-size: 14px;
+  color: red;
+}
+
+.product-actions {
+  font-size: 13px;
+}
+
+/* チェックボックス */
+.checkbox-input {
+  display: none;
+}
+
+.checkbox-parts {
+  padding-left: 20px;
+  position: relative;
+}
+
+.checkbox-parts::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 1px;
+  left: 0;
+  width: 15px;
+  height: 15px;
+  border: 1px solid #999;
+  border-radius: 4px;
+  background-color: #ffffff;
+}
+
+.checkbox-input:checked + .checkbox-parts {
+  color: #138496;
+}
+
+.checkbox-input:checked + .checkbox-parts::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: -2px;
+  left: 5px;
+  width: 7px;
+  height: 14px;
+  transform: rotate(40deg);
+  border-bottom: 3px solid #138496;
+  border-right: 3px solid #138496;
+}
+
+.checkbox-margin {
+  margin-bottom: 0;
+}
+
+.loading-mask {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* セレクトボックス */
+.dropholder {
+  position: relative;
+  .dropdown {
+    width: 270px;
+    padding: 3px 5px 3px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    height: 30px;
+    border: 1px solid #ced4da;
+    position: relative;
+    &:after {
+      content: "▾";
+      font-size: 36px;
+      position: absolute;
+      right: 10px;
+      top: -15px;
+    }
+    p {
+      margin: 0;
+    }
+  }
+  .menu {
+    position: absolute;
+    left: 0;
+    top: 35px;
+    width: 270px;
+    cursor: pointer;
+    display: none;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    background-color: #ffffff;
+    transition: all 0.1s;
+    z-index: 5;
+    overflow: hidden;
+    padding: 3px 0 0 0;
+    list-style: none;
+    li {
+      padding: 0 15px 3px;
+    }
+  }
+  .showMenu {
+    display: block;
+  }
+}
+
+tr#accordion {
+  .card-header {
+    border-bottom: 1px solid #dee2e6;
+  }
+}
+
+.scraping-alert-top {
+  border-radius: 0 !important;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 56px;
+  padding: 15px;
+  z-index: 100;
+  font-weight: bold;
+  display: none;
+}
+
+.note {
+  font-size: 8px;
+  margin-top: 3px;
+  padding: 3px 5px;
+  border: solid 1px #ccc;
+  border-radius: 5px;
+  background-color: #f3f3f3;
+}
+
+.loading {
+  position: relative;
+}
+
+.loading:after {
+  animation: fa-spin 1.5s infinite linear;
+  content: "\f1ce";
+  color: #ddd;
+  display: inline-block;
+  font-family: "Font Awesome 5 Free";
+  font-size: 1.5em;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 900;
+  line-height: 1;
+  text-rendering: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -0.5em;
+  margin-top: -0.5em;
+}
+.product__image.loaded:after {
+  display: none;
+}
+@keyframes fa-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+.btn-switch-account-pos {
+  position: fixed;
+  right: 30px;
+  bottom: 25px;
+  z-index: 1;
+}
+
+.btn-switch-account {
+  font-size: 45px;
+  text-shadow: 1px 1px 3px #007bff;
+}
+
+.right-border {
+  padding-right: 10px;
+  margin-right: 10px;
+  border-right: solid 1px rgba(0, 0, 0, 0.15);
+}
+
+table td {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

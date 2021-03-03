@@ -1,0 +1,24 @@
+<div class="container">
+  <%= label_tag :title, t('.title'), class: 'title' %><br>
+  <hr>
+</div>
+
+<%= form_with(model: @keyword, url: url_for(action: :update), local: true) do |f| %>
+<%= render 'layouts/error_messages', model: @keyword %>
+<div class="container">
+  <div class="form-group">
+    <%= f.label :name, t('activerecord.attributes.keyword.name'), class: 'form-margin' %>
+    <%= f.text_field :name, class: 'form-control', placeholder: t('label.Require') %>
+  </div>
+  <div class="form-group">
+    <%= f.label :status, t('activerecord.attributes.keyword.status'), class: 'form-margin' %><br />
+    <%= f.select :status, keyword_status_lists,
+      { prompt: t('activerecord.attributes.keyword.status') },
+      { class: 'form-control form-control-sm align-top w-10 d-inline-block' } %>
+  </div>
+  <div class="form-group">
+    <%= link_to t('label.Back'), url_for(action: :index), class: 'btn btn-secondary' %>
+    <%= f.submit t('label.Update'), class: 'btn btn-info' %>
+  </div>
+</div>
+<% end %>
