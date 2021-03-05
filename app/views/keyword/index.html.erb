@@ -36,7 +36,7 @@
           <%= keyword.status_i18n %>
         </td>
         <td class="align-middle">
-          <%= link_to url_for(action: :show, id: keyword.id), class: 'keyword-name' do %>
+          <%= link_to url_for(controller: :ad, action: :show, id: keyword.id), class: 'keyword-name' do %>
           <%= keyword.name %>
           <% end %>
         </td>

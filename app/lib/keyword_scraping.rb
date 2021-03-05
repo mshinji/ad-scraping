@@ -1,6 +1,8 @@
+require 'net/http'
+require 'uri'
+
 module KeywordScraping
   def scraping(keywords, job_id)
-
     if keywords.length == 1
       scraping_history = ScrapingHistory.exec_scraping(scraping_type: :one_keyword, keyword_id: keywords[0].id, job_id: job_id)
     else
@@ -22,8 +24,22 @@ module KeywordScraping
           yahoo_ad_params.concat(yahoo_ads)
         end
 
-        google_ad_params = google_ads.uniq { |ad| ad[:url] }
-        yahoo_ad_params = yahoo_ads.uniq { |ad| ad[:url] }
+        # 重複を除く
+        google_ad_params.uniq! { |param| param[:url] }
+        yahoo_ad_params.uniq! { |param| param[:url] }
+
+        # YahooのURLをリダイレクト先に変換
+        yahoo_ad_params.map! do |param|
+          {
+            name: param[:name],
+            url: redirected_url(param[:url])
+          }
+        end
+
+        # 再度重複を除く
+        google_ad_params.uniq! { |param| param[:url] }
+        yahoo_ad_params.uniq! { |param| param[:url] }
+
       rescue StandardError => e
         message = e
         scraping_history.failed_scraping(message)
@@ -39,7 +55,7 @@ module KeywordScraping
         [:google, :yahoo].each do |engine|
           ad_params = engine == :google ? google_ad_params : yahoo_ad_params
 
-          new_ad_params = ad_params.map do |ad_param|
+          ad_params.each do |ad_param|
             find_by_url = Ad.find_by(url: ad_param[:url], engine: engine, keyword_id: keyword.id)
             if find_by_url.blank?
               # 存在しない場合は新規作成
@@ -64,6 +80,7 @@ module KeywordScraping
     ads = @wait.until { @driver.find_elements(:xpath, '//*[@aria-label="広告"]//a') }
     ad_params = ads.map do |node|
       next if node.attribute(:href).include?('https://www.google.com')
+      next if node.attribute(:href).include?('https://www.googleadservices.com')
 
       {
         url: node.attribute(:href),
@@ -75,7 +92,32 @@ module KeywordScraping
   end
 
   def yahoo_ads
-    []
+    @driver.get(Constants::YAHOO_BASE_URL + @keyword.name)
+    ads = @wait.until { @driver.find_elements(:xpath, '//div[contains(@class, "Ad")]//h3/parent::a') }
+    ad_params = ads.map do |node|
+      {
+        url: node.attribute(:href),
+        name: node.text
+      }
+    end
+
+    ad_params.compact
+  end
+
+  def redirected_url(url)
+    (1..5).each do |i|
+      redirected_url = Net::HTTP.get_response(URI.parse(url))['location']
+      return elim_yclid(url) if redirected_url.nil?
+
+      url = redirected_url
+    end
+
+    elim_yclid(url)
+  end
+
+  # yahooの広告は自動でタグが付けられるので除去
+  def elim_yclid(url)
+    url.split(/&+yclid=/)[0]
   end
 
   def set_host

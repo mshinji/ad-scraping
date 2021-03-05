@@ -38,7 +38,6 @@ class KeywordController < ApplicationController
   end
 
   def one_scraping
-    # OneKeywordScrapingJob.perform_later(@keyword)
     OneKeywordScrapingJob.perform_now(@keyword)
   end
 
