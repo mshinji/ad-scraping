@@ -21,7 +21,6 @@ ja:
         name: キーワード名
 
       ad:
-        status: ステータス
         engine: エンジン
         url: URL
         name: 広告名

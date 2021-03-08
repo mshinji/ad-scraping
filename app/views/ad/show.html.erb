@@ -6,9 +6,6 @@
 <div class="container">
   <div class="mb-3">
     <%= search_form_for @q, url: url_for(action: :show) do |f| %>
-    <%= f.select :status_eq, Ad.statuses.map{ |k, v| [Ad.statuses_i18n[k], v] },
-      { selected: @q.status_eq, prompt: t('activerecord.attributes.ad.status') },
-      { class: 'form-control form-control-sm align-top w-10 d-inline-block' } %>
     <%= f.select :engine_eq, Ad.engines.map{ |k, v| [Ad.engines_i18n[k], v] },
       { selected: @q.engine_eq, prompt: t('activerecord.attributes.ad.engine') },
       { class: 'form-control form-control-sm align-top w-10 d-inline-block' } %>
@@ -21,18 +18,14 @@
   <table class="table table-hover">
     <thead>
       <tr>
-        <th class="w-15"><%= sort_link(@q, :status, t('.status')) %></th>
-        <th class="w-15"><%= sort_link(@q, :engine, t('.engine')) %></th>
-        <th class="w-30"><%= sort_link(@q, :url, t('.url')) %></th>
+        <th class="w-20"><%= sort_link(@q, :engine, t('.engine')) %></th>
+        <th class="w-40"><%= sort_link(@q, :url, t('.url')) %></th>
         <th class="w-40"><%= sort_link(@q, :name, t('.name')) %></th>
       </tr>
     </thead>
     <tbody>
       <% @ads.each do |ad| %>
       <tr>
-        <td class="text-center <%= ad_status_color ad %>">
-          <%= ad.status_i18n %>
-        </td>
         <td class="text-center">
           <%= ad.engine_i18n %>
         </td>
