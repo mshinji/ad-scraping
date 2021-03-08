@@ -17,7 +17,6 @@
 import "bootstrap";
 import "../stylesheets/application.scss";
 import "moment/locale/ja";
-import Clipboard from "clipboard";
 import "jquery-ui";
 import Rails from "@rails/ujs";
 
