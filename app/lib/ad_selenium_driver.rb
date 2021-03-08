@@ -13,7 +13,7 @@ class AdSeleniumDriver
     options.add_argument('--no-sandbox')
     options.add_argument('--disable-dev-shm-usage')
     options.add_argument('--window-size=1920,1080')
-    # options.add_argument("--user-agent=#{Faker::Internet.user_agent}")
+    options.add_argument("--user-agent=#{Faker::Internet.user_agent}")
     client.read_timeout = 120
 
     Selenium::WebDriver.for(:chrome, options: options, http_client: client)

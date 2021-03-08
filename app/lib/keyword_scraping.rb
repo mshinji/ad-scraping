@@ -11,8 +11,6 @@ module KeywordScraping
 
     keywords.each do |keyword|
       puts "========= #{ keyword.name } ========="
-      selenium = AdSeleniumDriver.new
-      @driver = selenium.driver(keywords)
       @wait = Selenium::WebDriver::Wait.new(timeout: 20)
       @keyword = keyword
 
@@ -20,6 +18,8 @@ module KeywordScraping
       yahoo_ad_params = []
       begin
         5.times do
+          selenium = AdSeleniumDriver.new
+          @driver = selenium.driver(keywords)
           google_ad_params.concat(google_ads)
           yahoo_ad_params.concat(yahoo_ads)
         end
