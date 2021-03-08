@@ -38,11 +38,11 @@ class KeywordController < ApplicationController
   end
 
   def one_scraping
-    OneKeywordScrapingJob.perform_now(@keyword)
+    OneKeywordScrapingJob.perform_later(@keyword)
   end
 
   def all_scraping
-    AllKeywordsScrapingJob.perform_now()
+    AllKeywordsScrapingJob.perform_later()
   end
 
   private

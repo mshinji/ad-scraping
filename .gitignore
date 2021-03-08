@@ -47,6 +47,7 @@ Cloud*.sql
 update_deploy.sh
 *.code-workspace
 *.DS_Store
+*.log
 
 /public/packs
 /public/packs-test
