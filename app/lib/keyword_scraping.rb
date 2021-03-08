@@ -50,8 +50,6 @@ module KeywordScraping
       @driver&.quit
 
       ActiveRecord::Base.transaction do
-        # 該当keywordのstatusを全てgoneにする
-        Ad.where(keyword_id: keyword.id).update_all(status: :gone)
         [:google, :yahoo].each do |engine|
           ad_params = engine == :google ? google_ad_params : yahoo_ad_params
 
@@ -59,11 +57,10 @@ module KeywordScraping
             find_by_url = Ad.find_by(url: ad_param[:url], engine: engine, keyword_id: keyword.id)
             if find_by_url.blank?
               # 存在しない場合は新規作成
-              Ad.create(name: ad_param[:name], url: ad_param[:url], engine: engine,
-              status: :initial, keyword_id: keyword.id, job_id: job_id)
+              Ad.create(name: ad_param[:name], url: ad_param[:url], engine: engine, keyword_id: keyword.id, job_id: job_id)
             else
               # 存在する場合は更新
-              find_by_url.update(name: ad_param[:name], status: :again, job_id: job_id)
+              find_by_url.update(name: ad_param[:name], job_id: job_id)
             end
           end
         end
